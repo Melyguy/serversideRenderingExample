@@ -29,19 +29,24 @@
             </ul>
         `);
     })
-    app.get('/deltakereLive', async (req,res) => {
+    app.get('/deltagere-2', async (req, res) => {
+        try {
             const result = await pool.query('SELECT * FROM users');
-
-            let html = "<h1>Deltagere</h1>"
-            html += "<ul>"
-
-            for( const row of result.rows){
-                html += "<li>" + row.name + "</li>"
+            let html = "<h1>Deltagere</h1>";
+            html += "<ul>";
+    
+            for (const row of result.rows) {
+                html += "<li>" + row.name + "</li>";
             }
-
-            html += "</ul>"
-            res.send(hmtl);
-    })
+    
+            html += "</ul>";
+            res.send(html);
+        } catch (err) {
+            console.error('Database query failed:', err);
+            res.status(500).send("En feil oppstod ved henting av data.");
+        }
+    });
+    
     app.get('/api',(req, res) => {
         res.json({message: 'Hello World!'})
     });
