@@ -11,6 +11,16 @@
             <p>og her er et paragraf</p>
         `);
     })
+    app.get('/deltakere-1',(req,res) => {
+        res.send(`
+            <h1>Klasse elever</h1>
+            <ul>
+                <li>Sigma</li>
+                <li>Joe Biden</li>
+                <li>Skibidi</li>
+            </ul>
+        `);
+    })
     app.listen(3000, () =>{
         console.log('Server is listening on port 3000')
     })  
