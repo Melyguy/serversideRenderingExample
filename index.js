@@ -10,7 +10,7 @@
         port: 5432,
     });
 
-    app.get('/',(req,res) => {
+    app.get('/',(req,res) => {  
         res.send('Hello world! Klokken er ' + new Date().toLocaleTimeString());
     })
     app.get('/her',(req,res) => {
@@ -46,10 +46,15 @@
             res.status(500).send("En feil oppstod ved henting av data.");
         }
     });
+    app.get('/deltagere-json', async (req, res) => {
+        const result = await pool.query('SELECT * FROM users');
+        res.json(result.rows);
+    });
     
     app.get('/api',(req, res) => {
         res.json({message: 'Hello World!'})
     });
     app.listen(3000, () =>{
         console.log('Server is listening on port 3000')
-    })  
+    }) 
+    app.use(express.static('public')); 
