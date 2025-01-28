@@ -6,4 +6,16 @@ CREATE TABLE users (
 INSERT INTO users (name) VALUES
     ('Joe Biden'),
     ('Donald Trump'),
+    ('Herman Lindalen Nodeland'),
+    ('superman'),
     ('Kamala Harris');
+
+CREATE TABLE Cars (
+    id SERIAL PRIMARY KEY,
+    merke VARCHAR(100)
+)
+INSERT INTO Cars (merke) VALUES
+    ('Mercedes'),
+    ('BMW'),
+    ('Toyota'),
+    ('Volvo');
