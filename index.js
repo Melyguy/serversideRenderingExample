@@ -51,6 +51,29 @@
         res.json(result.rows);
     });
     
+    app.get('/bilmerker', async (req, res) => {
+        try {
+            const result = await pool.query('SELECT * FROM Cars');
+            let html = "<h1>Bilmerker</h1>";
+            html += "<ul>";
+    
+            for (const row of result.rows) {
+                html += "<li>" + row.name + "</li>";
+            }
+    
+            html += "</ul>";
+            res.send(html);
+        } catch (err) {
+            console.error('Database query failed:', err);
+            res.status(500).send("En feil oppstod ved henting av data.");
+        }
+    });
+    app.get('/bilmerker-json', async (req, res) => {
+        const result = await pool.query('SELECT * FROM Cars');
+        res.json(result.rows);
+    });
+    
+
     app.get('/api',(req, res) => {
         res.json({message: 'Hello World!'})
     });
