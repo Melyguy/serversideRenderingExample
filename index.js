@@ -71,6 +71,7 @@
     app.get('/bilmerker-json', async (req, res) => {
         const result = await pool.query('SELECT * FROM Cars');
         res.json(result.rows);
+
     });
     
 
